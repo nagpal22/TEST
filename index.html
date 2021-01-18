@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Wheel</title>
+    
+
+    
+    <style type="text/css">
+	.center-block-chart-inner
+	{
+	transition: transform 0.6s;
+	}
+    text{
+        font-family:Helvetica, Arial, sans-serif;
+        font-size:11px;
+        pointer-events:none;
+    }
+	.center-block-chart { display:block; margin: 0 auto; max-width:760px; position:relative;}
+    #chart{
+        position:absolute;
+        width:500px;
+        height:500px;
+        top:200;
+        left:0;
+    }
+    #question{
+        position: absolute;
+        width:400px;
+        height:500px;
+        top:0;
+        left:520px;
+    }
+    #question h1{
+        font-size: 10px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 82%;
+    -webkit-transform: translate(0,-50%);
+    transform: translate(0,-47%);
+    color: #000;
+    font-size: 12px;
+    width: 59%;
+    left: -28px;
+
+    }
+	.upper_layer {    position: absolute;
+    height: 760px;
+    width: 760px;
+    background: rgba(0,0,0,0.2);
+    left: 0;
+    top: 30px;
+    z-index: 9;
+    border-radius: 100%;}
+.circle {
+     position: absolute;
+    border: 1px solid black;
+    padding: 0;
+    
+    width: 760px;
+    height: 760px;
+    border-radius: 50%;
+    list-style: none;
+    overflow: hidden;
+    z-index: 999999;
+    top: 16px;
+	-webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+    
+}
+li {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  transform-origin: 0% 100%;
+}
+.text {
+  position: absolute;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  text-align: center;
+  transform: skewY(60deg) rotate(15deg);
+  padding-top: 20px;
+}
+li:first-child {
+  transform: rotate(0deg) skewY(-60deg);
+}
+li:nth-child(2) {
+  transform: rotate(30deg) skewY(-60deg);
+}
+li:nth-child(3) {
+  transform: rotate(60deg) skewY(-60deg);
+}
+li:nth-child(4) {
+  transform: rotate(90deg) skewY(-60deg);
+}
+li:nth-child(5) {
+  transform: rotate(120deg) skewY(-60deg);
+}
+li:nth-child(6) {
+  transform: rotate(150deg) skewY(-60deg);
+}
+li:nth-child(7) {
+  transform: rotate(180deg) skewY(-60deg);
+}
+li:nth-child(8) {
+  transform: rotate(210deg) skewY(-60deg);
+}
+li:nth-child(9) {
+  transform: rotate(240deg) skewY(-60deg);
+}
+li:nth-child(10) {
+  transform: rotate(270deg) skewY(-60deg);
+}
+li:nth-child(11) {
+  transform: rotate(300deg) skewY(-60deg);
+}
+li:nth-child(12) {
+  transform: rotate(330deg) skewY(-60deg);
+}
+li:first-child .text {
+  background: #fff;
+}
+li:nth-child(2) .text {
+ background: #fff;
+}
+li:nth-child(3) .text {
+ background: #fff;;
+}
+li:nth-child(4) .text {
+background: transparent;
+}
+li:nth-child(5) .text {
+ background: #fff;
+}
+li:nth-child(6) .text {
+ background: #fff;
+}
+li:nth-child(7) .text {
+ background: #fff;
+}
+
+.circle2 li:nth-child(8) .text , .circle2 li:nth-child(7) .text {
+ background: #d9ecd4;
+}
+.circle2 li:nth-child(2) .text , .circle2 li:nth-child(3) .text {
+ background: #fcd7c8 !important;
+}
+.circle2 li:nth-child(8) .text , .circle2 li:nth-child(7) .text {
+ background: #d9ecd4;
+}
+.circle2 li:nth-child(6) .text , .circle2 li:nth-child(7) .text {
+ background: #c7dcf2 !important;
+}
+
+
+.circle2 .text {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	text-align: center;
+    -webkit-transform: skewY(45deg) rotate(20deg);
+    -ms-transform: skewY(45deg) rotate(20deg);
+    transform: skewY(45deg) rotate(20deg);
+    padding-top: 70px;
+	z-index:9;
+	
+}
+.circle2 li .text {
+	 background: #d9ecd4;
+	}
+	.circle2 li:nth-child(2) .text {
+	 background: #000;
+	}
+	.circle2 li:first-child {
+    -webkit-transform: rotate(0deg) skewY(-45deg);
+    -ms-transform: rotate(0deg) skewY(-45deg);
+	transform: rotate(0deg) skewY(-45deg);     
+}
+.circle2 li:nth-child(2) {
+    -webkit-transform: rotate(45deg) skewY(-45deg);
+    -ms-transform: rotate(45deg) skewY(-45deg);
+	transform: rotate(45deg) skewY(-45deg);     
+}
+.circle2 li:nth-child(3) {
+    -webkit-transform: rotate(90deg) skewY(-45deg);
+    -ms-transform: rotate(90deg) skewY(-45deg);
+	transform: rotate(90deg) skewY(-45deg);    
+}
+.circle2 li:nth-child(4) {
+    -webkit-transform: rotate(135deg) skewY(-45deg);
+    -ms-transform: rotate(135deg) skewY(-45deg);
+	transform: rotate(135deg) skewY(-45deg);    
+}
+.circle2 li:nth-child(5) {
+    -webkit-transform: rotate(180deg) skewY(-45deg);
+    -ms-transform: rotate(180deg) skewY(-45deg);
+	transform: rotate(180deg) skewY(-45deg);    
+}
+.circle2 li:nth-child(6) {
+    -webkit-transform: rotate(225deg) skewY(-45deg);
+    -ms-transform: rotate(225deg) skewY(-45deg);
+	transform: rotate(225deg) skewY(-45deg);    
+}
+.circle2 li:nth-child(7) {
+    -webkit-transform: rotate(270deg) skewY(-45deg);
+    -ms-transform: rotate(270deg) skewY(-45deg);
+	transform: rotate(270deg) skewY(-45deg);    
+}
+.circle2 li:nth-child(8) {
+    -webkit-transform: rotate(315deg) skewY(-45deg);
+    -ms-transform: rotate(315deg) skewY(-45deg);
+	transform: rotate(315deg) skewY(-45deg);    
+}
+.circel_upper .text {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	text-align: center;
+    -webkit-transform: skewY(45deg) rotate(20deg);
+    -ms-transform: skewY(45deg) rotate(20deg);
+    transform: skewY(45deg) rotate(20deg);
+    padding-top: 70px;
+	z-index:9
+}
+.circel_upper li:nth-child(3) .text , .circel_upper li:nth-child(4) .text  , .circel_upper li:nth-child(5) .text {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	text-align: center;
+    -webkit-transform: skewY(0deg) rotate(41deg);
+    -ms-transform: skewY(0deg) rotate(41deg);
+    transform: skewY(0deg) rotate(41deg);
+    padding-top: 70px;
+	z-index:9
+}
+
+
+.circel_upper li:first-child {
+    -webkit-transform: rotate(0deg) skewY(-45deg);
+    -ms-transform: rotate(0deg) skewY(-45deg);
+	transform: rotate(0deg) skewY(-45deg);     
+}
+.circel_upper li:nth-child(2) {
+    -webkit-transform: rotate(45deg) skewY(-45deg);
+    -ms-transform: rotate(45deg) skewY(-45deg);
+	transform: rotate(45deg) skewY(-45deg);     
+}
+.circel_upper li:nth-child(3) , .circel_upper li:nth-child(4) {
+    -webkit-transform: rotate(90deg) skewY(0deg);
+    -ms-transform: rotate(90deg) skewY(0deg);
+	transform: rotate(90deg) skewY(0deg);     
+}
+.circel_upper li:nth-child(4) {
+    -webkit-transform: rotate(180deg) skewY(0deg);
+    -ms-transform: rotate(180deg) skewY(0deg);
+	transform: rotate(180deg) skewY(0deg);     
+}
+.circel_upper li:nth-child(5) {
+    -webkit-transform: rotate(270deg) skewY(0deg);
+    -ms-transform: rotate(270deg) skewY(0deg);
+	transform: rotate(270deg) skewY(0deg);     
+}
+
+
+
+.circel_upper li:first-child .text {
+	transparent:red !important;
+	
+	}
+		.circel_upper li { border:0px solid #000;}
+	.circel_upper li .text { background:#fff !important;}
+.circel_upper li:nth-child(2) .text { background:transparent !important;}
+.circel_upper li:nth-child(1) .text
+{
+	padding-top: 17px;
+    transform: skewY(45deg) rotate(22deg);
+}
+.move_btn { background:#000;  color:#fff; padding:10px; margin:10px; position:relative; z-index:9999999999;}
+.circle-back {
+  position: relative;
+  border: 1px solid black;
+  padding: 0;
+ 
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  list-style: none;
+  overflow: hidden;
+   transition: transform 0.6s;
+  transform-style: preserve-3d;
+  top: 32px;
+  
+	   
+}
+.circle-back li {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  transform-origin: 0% 100%;
+}
+.circle-back .text {
+  position: absolute;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  text-align: center;
+  transform: skewY(60deg) rotate(15deg);
+  padding-top: 20px;
+}
+.circle-back li:first-child {
+  transform: rotate(0deg) skewY(-60deg);
+}
+.circle-back li:nth-child(2) {
+  transform: rotate(30deg) skewY(-60deg);
+}
+.circle-back li:nth-child(3) {
+  transform: rotate(60deg) skewY(-60deg);
+}
+.circle-back li:nth-child(4) {
+  transform: rotate(90deg) skewY(-60deg);
+}
+.circle-back li:nth-child(5) {
+  transform: rotate(120deg) skewY(-60deg);
+}
+.circle-back li:nth-child(6) {
+  transform: rotate(150deg) skewY(-60deg);
+}
+.circle-back li:nth-child(7) {
+  transform: rotate(180deg) skewY(-60deg);
+}
+.circle-back li:nth-child(8) {
+  transform: rotate(210deg) skewY(-60deg);
+}
+.circle-back li:nth-child(9) {
+  transform: rotate(240deg) skewY(-60deg);
+}
+.circle-back li:nth-child(10) {
+  transform: rotate(270deg) skewY(-60deg);
+}
+.circle-back li:nth-child(11) {
+  transform: rotate(300deg) skewY(-60deg);
+}
+.circle-back li:nth-child(12) {
+  transform: rotate(330deg) skewY(-60deg);
+}
+.circle-back li .text {
+  background: green;
+  border:1px solid #000;
+}  
+.circle-back li:nth-child(1) .text {
+  background: #fcd7c8;
+ 
+}
+.circle-back li:nth-child(2) .text {
+  background: #c7dcf2;
+ 
+}
+.circle-back li:nth-child(3) .text {
+  background: #d9ecd4;
+ 
+}
+.circle-back li:nth-child(4) .text {
+  background: #fcd7c8;
+ 
+}
+.circle-back li:nth-child(5) .text {
+  background: #fffbd5;
+ 
+}
+.circle-back li:nth-child(6) .text {
+  background: #d9ecd4;
+ 
+}
+.circle-back li:nth-child(7) .text {
+  background: #fcd7c8;
+ 
+}
+.circle-back li:nth-child(8) .text {
+  background: #fffbd5;
+ 
+}
+.circle-back li:nth-child(9) .text {
+  background: #c7dcf2;
+ 
+}
+.circle-back li:nth-child(10) .text {
+  background: #fffbd5;
+ 
+}
+.circle-back li:nth-child(11) .text {
+  background: #c7dcf2;
+ 
+}
+.circle-back li:nth-child(12) .text {
+  background: #d9ecd4;
+ 
+}
+
+	
+
+
+.circle-back li .text  span{ transform:rotateY(180deg); display:block;}
+.center-block-chart-inner
+	{
+	transition: transform 0.6s;
+	}
+	.flips {
+	    transform: rotateY(180deg);
+	}
+	.flips2 {
+	    transform: rotateY(0deg);
+	}
+</style>
+
+
+
+
+
+
+  
+    
+</head>
+<body>
+
+<div class="center-block-chart">
+<div class="center-block-chart-inner">
+<!-- Layer 1-->
+<ul class="circle circle2">
+  <li>
+    <div class="text">Being put in a situation <br> where I am constantly being <br> micro-managed, monitored or <br> questioned. I am not stupid. <br>I always get the job done <br> and I get the job done  <br>sooner the more  <br>I am left alon?</div>
+  </li>
+  <li>
+    <div class="text">Challenges • Competition Winning  <br>• Freedom • Money  <br>Spontaneity • Big-Idea Thinking  <br>Being Center of Attention <br> Leading • Family<br> Completion Confidence <br> Being Right<br> Risk-Taking<br> Impulsive <br> Being</div>
+  </li>
+  <li>
+    <div class="text">Being held back from <br> what I want to do, <br> when I want to do it and <br> how i want to do it !</div>
+  </li>
+  <li>
+    <div class="text">Structure • Organization <br>  Punctuality • Tradition <br>  Honesty • Planning <br> Socializing • Details <br> Philanthropy • Stability <br> Public Recognition <br> Being Productive <br> Implementing <br> Compulsive <br> Teaching <br> Manners </div>
+  </li>
+  <li>
+    <div class="text">When others neither <br> respect,  understand nor comply <br> with imperative parameters <br> which are necessary <br> for effective <br> implementation <br> of a plan.</div>
+  </li>
+  <li>
+    <div class="text">Love • Compassion Harmony <br> • Being Helpful  <br> Benevolence • Family <br>  Animals • Joyfulness <br> Peace • Intuitive <br> Cooperation <br>  Selflessness <br> Being Hopeful <br> Forgiveness <br> Encouraging <br> Inspiration</div>
+  </li>
+  <li>
+    <div class="text">People who are cruel, <br> inconsiderate and selfish! <br> Don’t they realize <br> we all matter?</div>
+  </li>
+  <li>
+    <div class="text">Logic • Research • Curiosity <br> Problem Solving • <br> Exploring Independence <br> • Individuality  Technology <br> Discovery Justice <br> • Respect Being <br> Correct Competence <br> Learning Puzzles <br> Hobbies</div>
+  </li>
+  
+  </ul>
+ <!-- end -->
+ <!-- layer 2 --> 
+  
+<ul class="circle circel_upper">
+  <li>
+    <div class="text"><strong>For ordering products <br> or for 
+additional info please <br> contact us at:</strong> <br>
+The <strong>PACE®</strong> Organization, <br> Inc. <br>
+P.O. Box 299 <br>
+Del Mar, CA 92014 <br>
+<strong>email: sales@paceorg.com</strong> <br>
+<strong>www.paceorg.com</strong> <br>
+<strong>(858) 449-7223 (PACE)</strong> <br>
+©Copyright 2010. <br>
+All Rights <br> Reserved.</div>
+  </li>
+  <li>
+    <div class="text"></div>
+  </li>
+  <li>
+    <div class="text"><h3 style="margin:5px !important; ">3 Steps to Empathy  </h3>
+Empathy does not require the acceptance or approval <br>
+of the other person’s opinion — only an understanding <br>
+of how they see the situation. <br>
+1. Remember the “filters” of those around you. <br>
+2. Allow others to be unique and see the world <br>
+in their own way. <br>
+3. Only to the degree to which you can do <br>
+steps I and II can you fully empathize, <br>
+allowing you to see how the <br>
+world looks to <br>
+another person.</div>
+  </li><li>
+    <div class="text">The <strong>PACE®</strong> Organization, Inc. <br>
+For nearly <strong>60</strong> years, The <strong>PACE®</strong> Organization, Inc. has <br>
+been a pioneer in the area of enhancing communication, developing <br>
+team building and unlocking human potential. Since 1961, nearly half a <br>
+million individuals have participated in our programs which include <br>
+but are not limited to: The <strong>PACE®</strong> Palette Workshop, <br>
+Effective Communication Through Color, <br>
+Conflict Resolution Through Color, <br>
+Release Your Brakes Workshop and <br>
+High Performance Team Building, <br>
+to name a few.</div>
+  </li><li>
+    <div class="text" style="padding-top:45px;"> <h3 style="margin:5px !important; ">Team Building </h3>  
+When building a team, remember all colors are of  <br>
+equal importance. If you are a team leader, consider which  <br>
+temperaments are represented and which, if any, are missing.  <br>
+Being sensitive to the color of each team member will help you  <br>
+enhance team spirit and cooperation—and get better results!  <br>
+Give <strong style="color:#ef3f35;">Reds</strong> freedom, challenge and adventure. Give <strong style="color:#edee00;">Yellows</strong> <br>
+structure, rules and stability. Give <strong style="color:#1a6ebc;">Blues</strong> the  <br>
+opportunity to work together and  <br>
+give <strong style="color:#36b44c;">Greens</strong> independence and  <br>
+intellectual challenges.  <br></div>
+  </li>
+
+
+ 
+  </ul>
+  </div>
+  <ul class="circle-back">
+
+    <li>
+    <div class="text"><span> Someone who is <br>  likely to plan an <br> “athletic”  <br>fundraiser.</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>A person who likes <br> structure, planning  <br>  and neatness . . .  <br>and <br> loves people.</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>Someone who would <br>  be excited about <br>  organizing a <br>  research library</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>A person who loves <br> people and contributing <br> to others but will also <br> have very loud and <br> strong righteous <br> indignation  when <br> they see cruelty <br>  or unfairness</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>Loves creating <br>plans with <br> other people.</span></div>
+  </li>
+  
+   
+  
+    <li>
+    <div class="text"><span>Someone who likes to <br> identify and then prove <br> the necessity of a <br>  global change to  <br> positively affect <br>  all living things <br> (people, animals, <br> planet).</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>Someone who wants <br>  to find all the anwers <br>  and is willing to <br>  venture for them.</span>	</div>
+  </li>
+  
+    <li>
+    <div class="text"><span>Someone likely to be <br>  a founder and regular  <br> organizer and/or <br>  host of the local  <br> Mensa club.</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>A person who has a lot <br>	   of curiosity about both <br> people and things. Enjoys <br> solving technical <br>  problems and <br>  having “fun” with <br> others—but not <br> necessarily <br>  researching  <br>with them.</span></div>
+  </li>
+  
+    <li>
+    <div class="text"><span>Creative in motivating <br> others to follow the <br> rules while still <br> remaining <br> competitive.</span></div>
+  </li>
+   <li>
+    <div class="text"><span>This person loves  <br> adventuring with people. <br> They stay in touch  <br> with those they went <br>  to school with and are <br> ready to go  <br> visit them  <br> right no</span></div>
+  </li>
+    <li>
+    <div class="text"><span>A person who is <br>  extremely creative <br>  and independent in <br>  finding solutions</span></div>
+  </li>
+  
+  </ul>
+
+    </div>
+	<a href="#" class="spin_up move_btn">MOVE UP </a>
+<a href="#" class="spin_down move_btn"> MOVE DOWN</a>
+<a href="#" class="flip move_btn "> FLIP</a>
+ <script src="script.js"></script>
+ <script>
+ $( document ).ready(function() {
+	 var angle=0;
+  $( ".spin_up" ).click(function(e) {
+	  angle = angle+45;
+	
+	  e.preventDefault();
+	   $(".circle2").css("transform" , "rotate("+ angle +"deg)");
+	  
+});
+ $( ".spin_down" ).click(function(e) {
+	  angle = angle-45;
+	
+	  e.preventDefault();
+	   $(".circle2").css("transform" , "rotate("+ angle +"deg)");
+	  
+});
+$( ".flip" ).click(function(e) {
+	  angle = 180;
+	
+	  e.preventDefault();
+	   $(".center-block-chart-inner").toggleClass('flips');
+	    $(".circle-back").toggleClass('flips');
+	   
+	   
+	  
+});
+
+});
+ 
+ 
+ 
+ </script>
+  
+</body>
+</html>
