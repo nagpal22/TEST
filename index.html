@@ -423,6 +423,45 @@ li:nth-child(7) .text {
 	.flips2 {
 	    transform: rotateY(0deg);
 	}
+	/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 999999999999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  font-size:22px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 </style>
 
 
@@ -485,18 +524,9 @@ All Rights <br> Reserved.</div>
     <div class="text"></div>
   </li>
   <li>
-    <div class="text"><h3 style="margin:5px !important; ">3 Steps to Empathy  </h3>
-Empathy does not require the acceptance or approval <br>
-of the other person’s opinion — only an understanding <br>
-of how they see the situation. <br>
-1. Remember the “filters” of those around you. <br>
-2. Allow others to be unique and see the world <br>
-in their own way. <br>
-3. Only to the degree to which you can do <br>
-steps I and II can you fully empathize, <br>
-allowing you to see how the <br>
-world looks to <br>
-another person.</div>
+    <div class="text">
+<a id="myBtn" href="" class="expand_text_1" data-tab="show_model2">Click For Text</a>
+</div>
   </li><li>
     <div class="text">The <strong>PACE®</strong> Organization, Inc. <br>
 For nearly <strong>60</strong> years, The <strong>PACE®</strong> Organization, Inc. has <br>
@@ -508,7 +538,11 @@ Effective Communication Through Color, <br>
 Conflict Resolution Through Color, <br>
 Release Your Brakes Workshop and <br>
 High Performance Team Building, <br>
-to name a few.</div>
+to name a few.
+<a id="myBtn" href="" class="expand_text_1" data-tab="show_model1">Expand Text</a>
+<!-- The Modal -->
+
+</div>
   </li><li>
     <div class="text" style="padding-top:45px;"> <h3 style="margin:5px !important; ">Team Building </h3>  
 When building a team, remember all colors are of  <br>
@@ -580,7 +614,42 @@ intellectual challenges.  <br></div>
   </ul>
 
     </div>
-	<a href="#" class="spin_up move_btn">MOVE UP </a>
+	<div id="myModal" class="modal show_model1">
+
+  <!-- Modal content -->
+  <div class="modal-content model1">
+    <span class="close">&times;</span>
+    The <strong>PACE®</strong> Organization, Inc. 
+For nearly <strong>60</strong> years, The <strong>PACE®</strong> Organization, Inc. has 
+been a pioneer in the area of enhancing communication, developing 
+team building and unlocking human potential. Since 1961, nearly half a 
+million individuals have participated in our programs which include 
+but are not limited to: The <strong>PACE®</strong> Palette Workshop, 
+Effective Communication Through Color, 
+Conflict Resolution Through Color, 
+Release Your Brakes Workshop and 
+High Performance Team Building,
+to name a few
+  </div>
+  </div>
+  <div id="myModal" class="modal show_model2">
+    <div class="modal-content model2">
+	 <span class="close">&times;</span>
+<h3 style="margin:5px !important; ">3 Steps to Empathy  </h3>
+Empathy does not require the acceptance or approval 
+of the other person’s opinion — only an understanding 
+of how they see the situation. <br>
+1. Remember the “filters” of those around you. <br>
+2. Allow others to be unique and see the world 
+in their own way.  <br>
+3. Only to the degree to which you can do 
+steps I and II can you fully empathize,
+allowing you to see how the 
+world looks to 
+another person.
+</div>
+</div>
+<a href="#" class="spin_up move_btn">MOVE UP </a>
 <a href="#" class="spin_down move_btn"> MOVE DOWN</a>
 <a href="#" class="flip move_btn "> FLIP</a>
  <script src="script.js"></script>
@@ -611,6 +680,15 @@ $( ".flip" ).click(function(e) {
 	   
 	  
 });
+$( ".expand_text_1" ).click(function(e) {
+var curent_tab= $(this).attr("data-tab");
+	  e.preventDefault();
+	 $("."+curent_tab).show(); 
+});
+$( ".close" ).click(function(e) {
+$(".modal").hide(); 
+});
+
 
 });
  
